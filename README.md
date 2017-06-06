@@ -1,4 +1,5 @@
 # 21points
+<<<<<<< HEAD
 This application was generated using JHipster 4.5.1, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v4.5.1](https://jhipster.github.io/documentation-archive/v4.5.1).
 
 ## Development
@@ -113,3 +114,6 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [Protractor]: https://angular.github.io/protractor/
 [Leaflet]: http://leafletjs.com/
 [DefinitelyTyped]: http://definitelytyped.org/
+=======
+Jhipster 21points
+>>>>>>> 59a66deddc3f43da34e44cfc9ce5ed76e9585103
