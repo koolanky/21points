@@ -4,9 +4,9 @@
             <span class="hipster img-responsive img-rounded"></span>
         </div>
         <div class="col-md-8">
-            <h1>Welcome, Java Hipster!</h1>
+            <!-- <h1>Welcome, Java Hipster!</h1>
             <p class="lead">This is your homepage</p>
-
+			
             <div ng-switch="vm.isAuthenticated()">
                 <div class="alert alert-success" ng-switch-when="true">
                     You are logged in as user "{{vm.account.login}}".
@@ -15,17 +15,54 @@
                 <div class="alert alert-warning" ng-switch-when="false">
                     If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
                 </div>
+                
 
                 <div class="alert alert-warning" ng-switch-when="false">
                     You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
                 </div>
-            </div>
-
+            </div> -->
             <p>
-                If you have any question on JHipster:
+            	21-Points is here to track your health and improve your life. :)
             </p>
+			<a ui-sref="points.add" class="btn btn-primary btn-raised">Add Points</a>
+			<div class="row">
+				<div class="col-md-10">
+						<div class="progress progress-lg" ng-show="vm.pointsThisWeek.points">
+						<div class="progress-bar progress-bar-striped" ng-class="{
+							'progress-bar-success':vm.pointsThisWeek.points >= vm.preferences.weeklyGoals,
+							'progress-bar-danger':vm.pointsThisWeek.points < 10,
+							'progress-bar-warning': vm.pointsThisWeek.points>10 && vm.pointsThisWeek.points <
+							 vm.preferences.weeklyGoals}"
+						role="progressbar" aria-valuenow="{{vm.pointsThisWeek.points}}"
+						aria-valuemin="0" aria-valuemax="21" style="width: {{vm.pointsPercentage}}%">
+						<span ng-show="vm.pointsThisWeek.points">
+						{{vm.pointsThisWeek.points}} / Goal: {{vm.preferences.weeklyGoals}}
+						</span>
+						<span class="sr-only">{{vm.pointsPercentage}} points this week.</span>
+						</div>
+				</div>
+				<alert type="info" ng-hide="vm.pointsThisWeek.points">
+					No points yet this week, better get moving!
+					</alert>
+				</div>
+				<div class="row">
+					<div class="col-md-10">
+						<span ng-if="vm.bpReadings.readings.length">
+							<nvd3 options="vm.bpOptions" data="vm.bpData" class="with-3d-shadow withtransitions"></nvd3>
+						</span>
+						<span ng-if="!vm.bpReadings.readings.length">
+							<div uib-alert type="info">No blood pressure readings found.</div>
+						</span>
+					</div>
+				</div>
+</div>
+          	
+          
+           <!--  <p>
+                If you have any question on JHipster:
+            </p> -->
 
-            <ul>
+           <!--  <ul>
                 <li><a href="http://jhipster.github.io/" target="_blank">JHipster homepage</a></li>
                 <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank">JHipster on Stack Overflow</a></li>
                 <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank">JHipster bug tracker</a></li>
@@ -35,7 +72,7 @@
 
             <p>
              <span>If you like JHipster, don't forget to give us a star on </span>&nbsp;<a href="https://github.com/jhipster/generator-jhipster" target="_blank">Github</a>!
-            </p>
+            </p> -->
         </div>
     </div>
 </div>

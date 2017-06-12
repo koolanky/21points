@@ -75,13 +75,13 @@ if (OperatingSystem.current().isWindows()) {
 }
 
 test {
-    include '**/*UnitTest*'
-    include '**/*IntTest*'
+    //include '**/*UnitTest*'
+    //include '**/*IntTest*'
 
     // uncomment if the tests reports are not generated
     // see https://github.com/jhipster/generator-jhipster/pull/2771 and https://github.com/jhipster/generator-jhipster/pull/4484
     // ignoreFailures true
-    reports.html.enabled = false
+    //reports.html.enabled = false
 }
 
 task testReport(type: TestReport) {
@@ -206,6 +206,9 @@ dependencies {
     testCompile "com.h2database:h2"
     optional "org.springframework.boot:spring-boot-configuration-processor:${spring_boot_version}"
     //jhipster-needle-gradle-dependency - JHipster will add additional dependencies here
+	// https://mvnrepository.com/artifact/javax.inject/javax.inject
+	compile group: 'javax.inject', name: 'javax.inject', version: '1'
+
 }
 
 clean {

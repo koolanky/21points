@@ -1,0 +1,69 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPreferencesLabel">Create or edit a Preferences</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.preferences.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.preferences.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="21PointsApp.preferences.weeklyGoals" for="field_weeklyGoals">Weekly Goal</label>
+            <input type="number" class="form-control" name="weeklyGoals" id="field_weeklyGoals"
+                    ng-model="vm.preferences.weeklyGoals"
+                    required min="10" max="21"/>
+            <div ng-show="editForm.weeklyGoals.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.weeklyGoals.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.weeklyGoals.$error.min" translate-value-min="10">
+                    This field should be at least 10.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.weeklyGoals.$error.max">
+                    This field cannot be more than 21.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.weeklyGoals.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="21PointsApp.preferences.weightUnits" for="field_weightUnits">Weight Units</label>
+            <select class="form-control" name="weightUnits" ng-model="vm.preferences.weightUnits" id="field_weightUnits" required>
+                <option value="kg">kg</option>
+                <option value="lb">lb</option>
+            </select>
+            <div ng-show="editForm.weightUnits.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.weightUnits.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.preferences.user" ng-options="user as user.login for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
